@@ -1,0 +1,58 @@
+{% load staticfiles %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <meta charset="UTF-8">
+    <title>Question-Box</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+</head>
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+     <div class="container">
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="{% url 'index' %}">Question Bachs</a>
+       </div>
+       <div id="navbar" class="navbar-collapse collapse">
+         {% if request.user.is_authenticated %}
+           <form class="navbar-form navbar-right" role="logout" action="{% url 'django.contrib.auth.views.logout' %}" method='post'>
+           {% csrf_token %}
+             <input type="hidden" name="next" value="{{ request.path }}">
+             <button type="submit" class="btn btn-success">Sign out</button>
+           </form>
+           <span class="navbar-right navbar-brand ">Welcome {{ request.user }}</span>
+
+         {% else %}
+           <form class="navbar-form navbar-right" role="login" action="{% url 'django.contrib.auth.views.login' %}" method='post'>
+           {% csrf_token %}
+             <div class="form-group">
+               <input name="username" type="text" placeholder="Username" class="form-control">
+             </div>
+             <div class="form-group">
+               <input name="password" type="password" placeholder="Password" class="form-control">
+             </div>
+             <input type="hidden" name="next" value="{{ request.path }}">
+             <button type="submit" class="btn btn-success">Sign in</button>
+             <a class="btn btn-primary" href="/accounts/register" role="button">Register &raquo;</a>
+           </form>
+         {% endif %}
+       </div><!--/.navbar-collapse -->
+     </div>
+   </nav>
+<div class="body-content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>
