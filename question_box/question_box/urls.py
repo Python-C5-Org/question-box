@@ -18,4 +18,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    # url(r'^question/new', 'question.views.new_question', name='new_question'),
+    # url(r'^answer/new', 'answer.views.new_answer', name='new_answer'),
+
+
 ]
