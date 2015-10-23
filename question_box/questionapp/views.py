@@ -4,12 +4,16 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from .forms import QuestionCreateForm
-# from .models import Question
+from .models import Question
 # Create your views here.
 
 
 def index(request):
-    return render(request, 'questionapp/index.html')
+    questions = Question.objects.all()
+    return render(request, 'questionapp/index.html', {
+        'questions': questions
+
+    })
 
 
 def new_answer(request):
