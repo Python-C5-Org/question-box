@@ -1,0 +1,17 @@
+{%extends 'question_box/base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+  <form method="POST" action="{% url 'new_answer' %}" class="form-horizontal">
+    <legend>Add A New Answer</legend>
+    {% csrf_token %}
+    {{form.as_p}}
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary" value='submit new answer'>Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

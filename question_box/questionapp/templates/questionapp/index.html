@@ -1,0 +1,26 @@
+{% extends "question_box/base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+  <h1>Most Recent Questions</h1>
+  <table class="table table-hover">
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>Question</th>
+      <th>Timestamp</th>
+    </tr>
+    <tb>
+      {% for question in questions %}
+      <tr>
+        <td><a href="{% url 'profile_page' question.user.username%}">{{question.user.username}}</a></td>
+        <td>{{question.title}}</td>
+        <td>{{question.text}}</td>
+        <td>{{question.timestamp}}</td>
+      </tr>
+      {% endfor %}
+    </tb>
+  </table>
+  {% bootstrap_pagination page_obj %}
+</div>
+    {% endblock %}
