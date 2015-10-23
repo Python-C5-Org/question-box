@@ -1,4 +1,4 @@
-{% extends "question_box/base.html" %}
+{% extends "base.html" %}
 {% load bootstrap3 %}
 {% block content %}
 <div class="container">
@@ -21,6 +21,6 @@
       {% endfor %}
     </tb>
   </table>
-  {% bootstrap_pagination page_obj %}
+  {# {% bootstrap_pagination page_obj %}#}
 </div>
     {% endblock %}
