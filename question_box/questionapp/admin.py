@@ -4,11 +4,11 @@ from .models import Question, Answer
 
 
 class QuestionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['title', 'text', 'profile', 'timestamp']
 
 
 class AnswerAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['question', 'text', 'profile', 'timestamp']
 
 admin.site.register(Answer, AnswerAdmin)
 admin.site.register(Question, QuestionAdmin)
