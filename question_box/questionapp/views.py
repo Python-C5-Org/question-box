@@ -3,8 +3,9 @@ from django.shortcuts import render, redirect
 # from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
-from .forms import QuestionCreateForm
+from .forms import QuestionCreateForm, AnswerCreateForm
 from .models import Question
+
 # Create your views here.
 
 
@@ -14,6 +15,32 @@ def index(request):
         'questions': questions
 
     })
+
+
+def question(request, question_id):
+    question = Question.objects.get(pk=question_id)
+    answers = question.answer_set.values()
+
+    if request.method == 'POST':
+        print('after post')
+        form = AnswerCreateForm(request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.profile = request.user
+            answer.question = question_id
+            answer.timestamp = datetime.now()
+            answer.save()
+            # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        form = AnswerCreateForm()
+    return render(request, 'questionapp/question.html',
+                  {'question': question,
+                   'answers': answers,
+                   'form': form})
+
+    # return render(request, 'questionapp/question.html',
+    #               {'question': question,
+    #                'answers': answers})
 
 
 def new_answer(request):
