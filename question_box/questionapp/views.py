@@ -1,31 +1,41 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
-from django.contrib.auth.decorators import login_required
-from datetime import datetime
-from .forms import QuestionCreateForm
-from .models import Question
+# from django.views.generic import CreateView
+# from django.contrib.auth.decorators import login_required
+# from datetime import datetime
+# from .forms import QuestionCreateForm
+# from .models import Question
 # Create your views here.
 
 
-class CreateQuestion(CreateView):
-    model = Question
-    fields = ['title', 'text']
 
-    @login_required
-    def get(self, request):
-        return super().get(request)
+def index(request):
+    return render(request, 'questionapp/index.html')
 
-    @login_required
-    def post(self, request):
-        title = request.POST['title']
-        text = request.POST['text']
+def new_question(request):
+    return render(request, 'questionapp/new_question.html')
 
-        Question.objects.create(title=title, text=text,
-                                profile=request.user.profile,
-                                timestamp=datetime.utcnow())
+def new_answer(request):
+    return render(request, 'questionapp/new_answer.html')
 
-    return render(request, 'questionapp/new_question.html', {'form': form})
-
+# class CreateQuestion(CreateView):
+#     model = Question
+#     fields = ['title', 'text']
+#
+#     @login_required
+#     def get(self, request):
+#         return super().get(request)
+#
+#     @login_required
+#     def post(self, request):
+#         title = request.POST['title']
+#         text = request.POST['text']
+#
+#         Question.objects.create(title=title, text=text,
+#                                 profile=request.user.profile,
+#                                 timestamp=datetime.utcnow())
+#
+#     return render(request, 'questionapp/new_question.html', {'form': form})
+#
 
 # @login_required
 # def add_bookmark(request):
