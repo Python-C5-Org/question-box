@@ -1,0 +1,26 @@
+{% load staticfiles %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+    <meta charset="UTF-8">
+    <title>Qanda</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+
+
+    </div>
+</nav>
+<div class="body-content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>
