@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'questionapp',
+    'bootstrap3',
+    'bootstrap_themes',
 )
 
 MIDDLEWARE_CLASSES = (
