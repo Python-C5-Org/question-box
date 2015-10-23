@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='index'),
     url(r'^', include('django.contrib.auth.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^question/new$', views.new_question, name='new_question'),
     url(r'^answer/new$', views.new_answer, name='new_answer'),
 ]

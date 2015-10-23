@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'questionapp',
     'bootstrap3',
     'bootstrap_themes',
+    'widget_tweaks',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
