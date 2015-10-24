@@ -34,9 +34,9 @@
     <div class="collapse" id="collapseTag">
       <div class="well">
         <h2>Your Current Tag</h2>
-        <form method="POST" action="" class="form-horizontal">
+        <form method="POST" action="/question/{{ question.id }}" class="form-horizontal">
           {% csrf_token %}
-          {{ form.as_p }}
+          {{ tag_form.as_p }}
           <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
               <button type="reset" class="btn btn-default">Cancel</button>

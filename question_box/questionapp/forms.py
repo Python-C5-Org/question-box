@@ -20,7 +20,8 @@ class AnswerCreateForm(forms.ModelForm):
         fields = ('text',)
 
 
-class TagForm(forms.ModelForm):
+class TagCreateForm(forms.ModelForm):
+    text = forms.CharField(widget=forms.Textarea)
 
     class Meta:
         model = Tag

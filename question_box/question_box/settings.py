@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'bootstrap_themes',
     'widget_tweaks',
     'registration',
+    'taggit',
 )
 
 MIDDLEWARE_CLASSES = (

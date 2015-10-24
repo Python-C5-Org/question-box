@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
-from .forms import QuestionCreateForm, AnswerCreateForm
+from .forms import QuestionCreateForm, AnswerCreateForm, TagCreateForm
 from .models import Question, Answer
 # Create your views here.
 
@@ -22,6 +22,8 @@ def index(request):
 def question(request, question_id):
     question = Question.objects.get(pk=question_id)
     answers = question.answer_set.values()
+    tags = question.tag_set.values()
+
     for answer in answers:
         answer['username'] = User.objects.get(pk=answer['profile_id']).username
     if request.method == 'POST':
@@ -36,8 +38,23 @@ def question(request, question_id):
     else:
         form = AnswerCreateForm()
 
+    for tag in tags:
+        # answer['username'] = User.objects.get(pk=answer['profile_id']).username
+        if request.method == 'POST':
+            tag_form = TagCreateForm(request.POST)
+            if form.is_valid():
+                tag = form.save(commit=False)
+                tag.question = question
+                tag.save()
+                # Without this next line the tags won't be saved.
+                form.save_m2m()
+                return HttpResponseRedirect(reverse('question', kwargs={'question_id': question_id}))
+        else:
+            form = TagCreateForm()
+
     return render(request, 'questionapp/question.html', {'question': question,
                                                          'answers': answers,
+                                                         'tags': tags,
                                                          'form': form})
 
 
