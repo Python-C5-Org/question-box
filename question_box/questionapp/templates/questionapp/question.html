@@ -1,21 +1,33 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
 {% block content %}
+{% bootstrap_javascript %}
+{% bootstrap_css %}
 <div class="container">
   <h1>{{ question.title }}</h1>
-  <p>{{ question.text }}</p>
+  <blockquote>
+    <p class="lead">{{ question.text }}</p>
+    <footer><em>Asked by: {{question.profile.username}} on {{question.timestamp}}</footer>
+  </blockquote>
   {% if request.user.is_authenticated %}
-  <h2>Your Answer</h2>
-  <form method="POST" action="/question/{{ question.id }}/" class="form-horizontal">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <div class="form-group">
-  <div class="col-lg-10 col-lg-offset-2">
-    <button type="reset" class="btn btn-default">Cancel</button>
-    <button type="submit" class="btn btn-primary" value='submit new question'>Submit</button>
-  </div>
-  </div>
-  </form>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Add A New Answer
+    </button>
+    <div class="collapse" id="collapseExample">
+      <div class="well">
+        <h2>Your Current Answer</h2>
+        <form method="POST" action="/question/{{ question.id }}/" class="form-horizontal">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <button type="reset" class="btn btn-default">Cancel</button>
+              <button type="submit" class="btn btn-primary" value='submit new question'>Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   {% endif %}
   <h2>Answers</h2>
   <table class="table table-hover">
