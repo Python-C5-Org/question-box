@@ -31,7 +31,7 @@
              <button type="submit" class="btn btn-warning">Sign out</button>
              <a class="btn btn-success" href="/question/new" role="button">New Question &raquo;</a>
            </form>
-           <span class="navbar-right navbar-brand ">Welcome {{ request.user }} <span class="badge">42 Points</span></span>
+           <span class="navbar-right navbar-brand ">Welcome <a href="/profile/{{ request.user.id }}">{{ request.user }}</a> <span class="badge">42 Points</span></span>
 
          {% else %}
            <form class="navbar-form navbar-right" role="login" action="{% url 'django.contrib.auth.views.login' %}" method='post'>
