@@ -5,3 +5,8 @@
   margin-left: 7px;
   margin-right: 7px;
 }
+.navbar-text {
+  float: left;
+  padding: 0px 0px;
+  font-size: 18px;
+  line-height: 20px;
