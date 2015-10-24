@@ -4,5 +4,36 @@
 <div class="container">
   <h1>{{ question.title }}</h1>
   <p>{{ question.text }}</p>
+  {% if request.user.is_authenticated %}
+  <h2>Your Answer</h2>
+  <form method="POST" action="/question/{{ question.id }}/" class="form-horizontal">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div class="form-group">
+  <div class="col-lg-10 col-lg-offset-2">
+    <button type="reset" class="btn btn-default">Cancel</button>
+    <button type="submit" class="btn btn-primary" value='submit new question'>Submit</button>
+  </div>
+  </div>
+  </form>
+  {% endif %}
+  <h2>Answers</h2>
+  <table class="table table-hover">
+    <tr>
+      <th>User</th>
+      <th>Text</th>
+      <th>Time</th>
+    </tr>
+    <tb>
+      {% for answer in answers %}
+      <tr>
+        <td><a href="#">{{ answer.username }}</a></td>
+        <td>{{ answer.text }}</td>
+        <td>{{ answer.timestamp }}</td>
+      </tr>
+      {% endfor %}
+    </tb>
+  </table>
+
 </div>
 {% endblock %}
