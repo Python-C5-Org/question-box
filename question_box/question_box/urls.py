@@ -25,5 +25,7 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^question/(?P<question_id>\d+)/$', views.question, name='question'),
     url(r'^question/new$', views.new_question, name='new_question'),
-    url(r'^profile/(?P<profile_id>\d+)/', views.profile, name='profile',)
+    url(r'^profile/(?P<profile_id>\d+)/', views.profile, name='profile',),
+
+    url(r'^index3', views.index3, name='index3'),
 ]

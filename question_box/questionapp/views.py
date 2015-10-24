@@ -66,3 +66,7 @@ def profile(request, profile_id):
                   {'profile': profile,
                    'questions': questions,
                    'answers': answers})
+
+
+def index3(request):
+    return render(request, 'questionapp/index3.html')
