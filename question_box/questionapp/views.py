@@ -14,6 +14,7 @@ from .models import Question, Answer
 def index(request):
     return render(request, 'questionapp/index.html')
 
+
 def recent_questions(request):
     questions = Question.objects.all()
     return render(request, 'questionapp/recent_questions.html', {
@@ -69,7 +70,3 @@ def profile(request, profile_id):
                   {'profile': profile,
                    'questions': questions,
                    'answers': answers})
-
-
-def index3(request):
-    return render(request, 'questionapp/index3.html')
