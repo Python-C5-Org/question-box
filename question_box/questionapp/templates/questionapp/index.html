@@ -14,7 +14,6 @@
       {% for question in questions %}
       <tr>
         <td><a href="#">{{ question.profile.username }}</a></td>
-        {# <td><a href="{% url 'profile_page' question.profile.username%}">{{question.user.username}}</a></td>#}
         <td><a href="/question/{{ question.id }}">{{ question.title }}</a></td>
         <td>{{question.text}}</td>
         <td>{{question.timestamp}}</td>
