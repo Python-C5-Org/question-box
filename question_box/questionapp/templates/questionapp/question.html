@@ -27,7 +27,7 @@
     <tb>
       {% for answer in answers %}
       <tr>
-        <td><a href="#">{{ answer.username }}</a></td>
+        <td><a href="/profile/{{ answer.profile_id }}">{{ answer.username }}</a></td>
         <td>{{ answer.text }}</td>
         <td>{{ answer.timestamp }}</td>
       </tr>

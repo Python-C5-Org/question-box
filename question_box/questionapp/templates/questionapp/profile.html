@@ -1,0 +1,41 @@
+{%extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+    <h1>{{ profile.username }}</h1>
+    <div class="col-lg-5">
+        <h2>Questions</h2>
+        <table class="table table-hover">
+            <tr>
+              <th>Text</th>
+              <th>Time</th>
+            </tr>
+            <tb>
+              {% for question in questions %}
+              <tr>
+                <td><a href="/question/{{ question.id }}">{{ question.text }}</a></td>
+                <td>{{ question.timestamp }}</td>
+              </tr>
+              {% endfor %}
+            </tb>
+        </table>
+    </div>
+    <div class="col-lg-5">
+        <h2>Answers</h2>
+        <table class="table table-hover">
+            <tr>
+              <th>Text</th>
+              <th>Time</th>
+            </tr>
+            <tb>
+              {% for answer in answers %}
+              <tr>
+                <td><a href="/question/{{ answer.question_id }}">{{ answer.text }}</a></td>
+                <td>{{ answer.timestamp }}</td>
+              </tr>
+              {% endfor %}
+            </tb>
+        </table>
+    </div>
+</div>
+{% endblock %}

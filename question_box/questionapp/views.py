@@ -56,3 +56,13 @@ def new_question(request):
 
     return render(request, 'questionapp/new_question.html',
                   {'form': form})
+
+
+def profile(request, profile_id):
+    profile = User.objects.get(pk=profile_id)
+    questions = Question.objects.filter(profile_id=profile.id)
+    answers = Answer.objects.filter(profile_id=profile.id)
+    return render(request, 'questionapp/profile.html',
+                  {'profile': profile,
+                   'questions': questions,
+                   'answers': answers})
