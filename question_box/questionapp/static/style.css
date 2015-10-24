@@ -1,1 +1,7 @@
-.body-content {padding-top: 60px}
+.body-content {
+  padding-top: 60px
+}
+.badge {
+  margin-left: 7px;
+  margin-right: 7px;
+}
