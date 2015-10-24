@@ -62,3 +62,7 @@ def new_question(request):
         form = QuestionCreateForm()
     return render(request, 'questionapp/new_question.html',
                   {'form': form})
+
+
+def index2(request):
+    return render(request, 'questionapp/index2.html')

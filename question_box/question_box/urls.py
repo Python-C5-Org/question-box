@@ -26,4 +26,6 @@ urlpatterns = [
     url(r'^question/new$', views.new_question, name='new_question'),
     url(r'^question/(?P<question_id>\d+)/answer/new$', views.new_answer, name='new_answer'),
     url(r'^question/(?P<question_id>\d+)', views.question, name='question'),
+
+    url(r'^index2', views.index2, name='index2'),
 ]
