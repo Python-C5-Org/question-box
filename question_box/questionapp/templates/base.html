@@ -28,7 +28,8 @@
            <form class="navbar-form navbar-right" role="logout" action="{% url 'django.contrib.auth.views.logout' %}" method='post'>
            {% csrf_token %}
              <input type="hidden" name="next" value="{{ request.path }}">
-             <button type="submit" class="btn btn-success">Sign out</button>
+             <button type="submit" class="btn btn-warning">Sign out</button>
+             <a class="btn btn-success" href="/question/new" role="button">New Question &raquo;</a>
            </form>
            <span class="navbar-right navbar-brand ">Welcome {{ request.user }}</span>
 
