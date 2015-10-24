@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import include, url
-from django.contrib import admin, auth
+from django.contrib import admin
 
 from questionapp import views
 
@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^question/(?P<question_id>\d+)/$', views.question, name='question'),
     url(r'^question/new$', views.new_question, name='new_question'),
     url(r'^answer/new$', views.new_answer, name='new_answer'),
 ]
