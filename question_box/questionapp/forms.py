@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Answer, Question
+from .models import Answer, Question, Tag
 
 
 class QuestionCreateForm(forms.ModelForm):
@@ -17,4 +17,11 @@ class AnswerCreateForm(forms.ModelForm):
 
     class Meta:
         model = Answer
+        fields = ('text',)
+
+
+class TagForm(forms.ModelForm):
+
+    class Meta:
+        model = Tag
         fields = ('text',)
