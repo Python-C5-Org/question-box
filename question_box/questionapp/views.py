@@ -12,8 +12,12 @@ from .models import Question, Answer
 
 
 def index(request):
+    return render(request, 'questionapp/index.html')
+
+
+def recent_questions(request):
     questions = Question.objects.all()
-    return render(request, 'questionapp/index.html', {
+    return render(request, 'questionapp/recent_questions.html', {
         'questions': questions
 
     })
