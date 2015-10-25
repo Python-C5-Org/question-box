@@ -47,6 +47,24 @@
       </div>
     </div>
   {% endif %}
+  <h2>Tags</h2>
+  <table class="table table-hover">
+    <tr>
+      <th>tag</th>
+
+    </tr>
+    <tb>
+      {% for tag in tags %}
+      <tr>
+
+        <td>{{question.tags}}</td>
+
+      </tr>
+      {% endfor %}
+    </tb>
+  </table>
+
+
   <h2>Answers</h2>
   <table class="table table-hover">
     <tr>

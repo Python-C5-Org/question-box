@@ -29,8 +29,3 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.text
-
-
-class Tag(models.Model):
-    text = models.CharField(max_length=50)
-    # questions = models.ManyToManyField(Question)
